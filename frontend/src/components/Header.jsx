@@ -1,7 +1,20 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/jsx-props-no-spreading */
 import { Link, useNavigate } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
 import { useCurrentUserContext } from "../contexts/userContext";
 
-const BACK_END_URL = import.meta.env.VITE_BACKEND_URL;
+function stringAvatar(name) {
+  return {
+    sx: {
+      bgcolor: "#890000",
+    },
+    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+  };
+}
+
+// const BACK_END_URL = import.meta.env.VITE_BACKEND_URL;
 
 function Header() {
   const { user, setUser } = useCurrentUserContext();
@@ -16,43 +29,29 @@ function Header() {
   };
 
   return (
-    <nav className="w-full h-16 bg-red-800 bottom-0">
+    <nav className="w-full h-[7vh] bg-white fixed z-50 navbar">
       <div>
-        <Link to="/">Home</Link>
-
         <div>
-          <ul className="flex absolute  w-screen text-xl ">
+          <ul className="flex h-[7vh] justify-between items-center">
             {user.email ? (
               <>
                 <li>
-                  <Link to="/articles">Articles</Link>
+                  <div
+                    onClick={handleDisconnection}
+                    className="bg-disconnect bg-cover w-8 h-8 ml-4"
+                  />
                 </li>
-                <li>
-                  <button type="button" onClick={handleDisconnection}>
-                    Disconnect
-                  </button>
-                </li>
-                <li>
-                  <Link to="/avatar">
-                    {/* TODO lien vers le profil */}
-                    <img
-                      src={`${BACK_END_URL}/api/avatars/${user.avatar}`}
-                      alt="Avatar"
-                      width={24}
-                      height={24}
-                    />
-                  </Link>
+                <li className="mr-4">
+                  {/* TODO lien vers le profil */}
+                  <Avatar
+                    {...stringAvatar(`${user.firstname} ${user.lastname}`)}
+                  />
                 </li>
               </>
             ) : (
-              <>
-                <li>
-                  <Link to="/login">Login</Link>
-                </li>
-                <li>
-                  <Link to="/signUp">SignUp</Link>
-                </li>
-              </>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
             )}
           </ul>
         </div>

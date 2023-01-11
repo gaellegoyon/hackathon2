@@ -10,12 +10,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `hashedPassword` VARCHAR(250) NOT NULL,
   `is_admin` VARCHAR(45) NULL,
   `is_supplier` VARCHAR(45) NULL,
+    `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `vehicle`;
 CREATE TABLE IF NOT EXISTS `vehicle` (
+  
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `vehicle_brand` VARCHAR(45) NOT NULL,
