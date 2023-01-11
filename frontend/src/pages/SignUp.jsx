@@ -37,69 +37,48 @@ function SignUp() {
   };
 
   return (
-    <form
-      onSubmit={handleForm}
-      style={{ width: "18rem" }}
-      className="m-auto mt-5"
-    >
-      <div className="mb-3">
-        <label htmlFor="firstname" className="form-label">
-          First Name
-        </label>
+    <form onSubmit={handleForm}>
+      <div>
+        <label htmlFor="firstname">First Name</label>
         <input
           onChange={(e) => setFirstname(e.target.value)}
           type="firstname"
-          className="form-control"
           id="firstname"
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="lastname" className="form-label">
-          Lastname
-        </label>
+      <div>
+        <label htmlFor="lastname">Lastname</label>
         <input
           onChange={(e) => setLastname(e.target.value)}
           type="lastname"
-          className="form-control"
           id="lastname"
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="city" className="form-label">
-          City
-        </label>
+      <div>
+        <label htmlFor="city">City</label>
         <input
           onChange={(e) => setCity(e.target.value)}
           type="city"
-          className="form-control"
           id="city"
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="email" className="form-label">
-          Email
-        </label>
+      <div>
+        <label htmlFor="email">Email</label>
         <input
           onChange={(e) => setEmail(e.target.value)}
           type="email"
-          className="form-control"
           id="email"
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="password" className="form-label">
-          Password
-        </label>
+      <div>
+        <label htmlFor="password">Password</label>
         <input
           onChange={(e) => setPassword(e.target.value)}
           type="password"
-          className="form-control"
           id="password"
         />
       </div>
-      <button type="submit" className="btn btn-primary">
-        Inscription
-      </button>
+      <button type="submit">Inscription</button>
     </form>
   );
 }
