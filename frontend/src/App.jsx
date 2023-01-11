@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/App.css";
 
-import Profil from "@pages/Profil";
+import Profil from "./pages/Profil";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -11,6 +11,7 @@ import Avatar from "./pages/Avatar";
 import UserManage from "./components/UserManage";
 
 import { CurrentUserContextProvider } from "./contexts/userContext";
+import AddVehicle from "./components/AddVehicle";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/avatar" element={<Avatar />} />
           <Route path="/manageUser" element={<UserManage />} />
           <Route path="/profil" element={<Profil />} />
+          <Route path="/addVehicle" element={<AddVehicle />} />
         </Routes>
       </CurrentUserContextProvider>
     </BrowserRouter>
