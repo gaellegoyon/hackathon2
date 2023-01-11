@@ -1,7 +1,20 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/jsx-props-no-spreading */
 import { Link, useNavigate } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
 import { useCurrentUserContext } from "../contexts/userContext";
 
-const BACK_END_URL = import.meta.env.VITE_BACKEND_URL;
+function stringAvatar(name) {
+  return {
+    sx: {
+      bgcolor: "#890000",
+    },
+    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+  };
+}
+
+// const BACK_END_URL = import.meta.env.VITE_BACKEND_URL;
 
 function Header() {
   const { user, setUser } = useCurrentUserContext();
@@ -16,73 +29,34 @@ function Header() {
   };
 
   return (
-    <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav">
-              {user.email ? (
-                <>
-                  <li className="nav-item">
-                    <Link to="/articles" className="nav-link">
-                      Articles
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <button
-                      type="button"
-                      onClick={handleDisconnection}
-                      className="ml-auto btn btn-danger"
-                    >
-                      Disconnect
-                    </button>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/avatar" className="nav-link">
-                      {/* TODO lien vers le profil */}
-                      <img
-                        src={`${BACK_END_URL}/api/avatars/${user.avatar}`}
-                        alt="Avatar"
-                        width={24}
-                        height={24}
-                      />
-                    </Link>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li className="nav-item">
-                    <Link to="/login" className="nav-link">
-                      Login
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to="/signUp" className="nav-link">
-                      SignUp
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul>
-          </div>
+    <nav className="w-full h-[7vh] bg-white fixed z-50 navbar">
+      <div>
+        <div>
+          <ul className="flex h-[7vh] justify-between items-center">
+            {user.email ? (
+              <>
+                <li>
+                  <div
+                    onClick={handleDisconnection}
+                    className="bg-disconnect bg-cover w-8 h-8 ml-4"
+                  />
+                </li>
+                <li className="mr-4">
+                  {/* TODO lien vers le profil */}
+                  <Avatar
+                    {...stringAvatar(`${user.firstname} ${user.lastname}`)}
+                  />
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            )}
+          </ul>
         </div>
-      </nav>
-      <nav />
-    </header>
+      </div>
+    </nav>
   );
 }
 

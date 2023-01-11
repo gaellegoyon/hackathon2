@@ -67,79 +67,73 @@ function Login() {
         <img src={logo} alt="logo" className="w-[60%]" />
       </div>
       <ThemeProvider theme={darkTheme}>
-        <form
-          onSubmit={handleSubmit}
-          style={{ width: "18rem" }}
-          className="m-auto mt-5"
-        >
-          <Container component="main" maxWidth="xs">
-            <CssBaseline />
-            <Box
-              sx={{
-                marginTop: 8,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              component="h1"
+              variant="h5"
+              className="text-white text-main-font"
             >
-              <Typography
-                component="h1"
-                variant="h5"
-                className="text-white text-main-font"
+              Connexion
+            </Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                onChange={(e) => setEmail(e.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Adresse email"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                onChange={(e) => setPassword(e.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Mot de passe"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" />}
+                label="Se souvenir"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, background: "#890000", color: "white" }}
               >
-                Connexion
-              </Typography>
-              <Box
-                component="form"
-                onSubmit={handleSubmit}
-                noValidate
-                sx={{ mt: 1 }}
-              >
-                <TextField
-                  onChange={(e) => setEmail(e.target.value)}
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Adresse email"
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                />
-                <TextField
-                  onChange={(e) => setPassword(e.target.value)}
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Mot de passe"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                />
-                <FormControlLabel
-                  control={<Checkbox value="remember" />}
-                  label="Se souvenir"
-                />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2, background: "#890000", color: "white" }}
-                >
-                  Se connecter
-                </Button>
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2" sx={{ color: "white" }}>
-                      Vous avez oublié votre mot de passe ?
-                    </Link>
-                  </Grid>
+                Se connecter
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2" sx={{ color: "white" }}>
+                    Vous avez oublié votre mot de passe ?
+                  </Link>
                 </Grid>
-              </Box>
+              </Grid>
             </Box>
-          </Container>
-        </form>
+          </Box>
+        </Container>
         <div>{errorMessage}</div>
       </ThemeProvider>
     </div>

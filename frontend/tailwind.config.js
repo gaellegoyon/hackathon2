@@ -8,6 +8,8 @@ module.exports = {
       },
       backgroundImage: {
         logo: "url('/src/assets/logo.svg')",
+        vehicle1: "url('/src/assets/vehicle1.png')",
+        disconnect: "url('/src/assets/disconnect.svg')",
       },
     },
   },

@@ -28,8 +28,8 @@ function Articles() {
 
   return (
     <div>
-      <h1 className="text-center my-3">Articles</h1>
-      <div className="d-flex flex-wrap justify-content-center">
+      <h1>Articles</h1>
+      <div>
         {articles.map((article) => (
           <Article key={article.id} article={article} />
         ))}
