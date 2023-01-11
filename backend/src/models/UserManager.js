@@ -7,7 +7,7 @@ class UserManager extends AbstractManager {
 
   find(id) {
     return this.connection.query(
-      `select id, firstname, lastname, email, city, language, avatar from  ${this.table} where id = ?`,
+      `select id, firstname, lastname,  language, avatar from  ${this.table} where id = ?`,
       [id]
     );
   }
@@ -21,7 +21,7 @@ class UserManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `select id, firstname, lastname, email, city, language, avatar from  ${this.table}`
+      `select id, firstname, lastname, email, avatar from  ${this.table}`
     );
   }
 
@@ -33,10 +33,10 @@ class UserManager extends AbstractManager {
   }
 
   update(user) {
-    return this.connection.query(
-      `update ${this.table} set firstname = ?, lastname = ?, email = ?, hashedPassword = ? where id = ?`,
-      [user.firstname, user.lastname, user.email, user.hashedPassword, user.id]
-    );
+    return this.connection.query(`update ${this.table} set ? where id = ?`, [
+      user,
+      user.id,
+    ]);
   }
 
   updateAvatar(id, avatar) {
