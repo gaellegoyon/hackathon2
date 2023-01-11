@@ -46,7 +46,7 @@ function Login() {
       <form
         onSubmit={handleSubmit}
         style={{ width: "18rem" }}
-        className="m-auto mt-5"
+        className="h-screen"
       >
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
