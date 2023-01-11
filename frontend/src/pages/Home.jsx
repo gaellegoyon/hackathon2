@@ -1,10 +1,11 @@
 import React from "react";
-import CardVehicle from "@components/CardVehicle";
+import CardVehicle from "../components/CardVehicle";
 import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 
 function Home() {
   return (
-    <div className=" overflow-auto h-[80vh]">
+    <div className=" overflow-auto h-[94vh]">
       <Header />
       <div className="mt-20">
         <CardVehicle />
@@ -13,6 +14,7 @@ function Home() {
         <CardVehicle />
         <CardVehicle />
       </div>
+      <NavBar />
     </div>
   );
 }
