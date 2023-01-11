@@ -5,7 +5,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [city, setCity] = useState("");
+
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
@@ -18,7 +18,6 @@ function SignUp() {
       email,
       firstname,
       lastname,
-      city,
       password,
     });
 
@@ -52,14 +51,6 @@ function SignUp() {
           onChange={(e) => setLastname(e.target.value)}
           type="lastname"
           id="lastname"
-        />
-      </div>
-      <div>
-        <label htmlFor="city">City</label>
-        <input
-          onChange={(e) => setCity(e.target.value)}
-          type="city"
-          id="city"
         />
       </div>
       <div>

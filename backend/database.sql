@@ -1,78 +1,51 @@
 /* On desactive la verification des clés étrangères*/
 SET foreign_key_checks = 0;
 
-DROP TABLE IF EXISTS user;
-CREATE TABLE user (
-    id int primary key NOT NULL AUTO_INCREMENT,
-    firstname varchar(255) NOT NULL,
-    lastname varchar(255) NOT NULL,
-    email varchar(255) UNIQUE NOT NULL,
-    city varchar(255) DEFAULT NULL,
-    language varchar(255) DEFAULT NULL,
-    hashedPassword varchar(255) NOT NULL,
-    avatar varchar(255) DEFAULT NULL
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(45) NOT NULL,
+  `lastname` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
+  `hashedPassword` VARCHAR(250) NOT NULL,
+  `is_admin` VARCHAR(45) NULL,
+  `is_supplier` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE = InnoDB;
 
-INSERT INTO
-  user (firstname, lastname, email, city, language, hashedPassword)
-VALUES
-  (
-    'John',
-    'Doe',
-    'john.doe@example.com',
-    'Paris',
-    'English',
-    "$argon2id$v=19$m=16,t=2,p=1$emVmZXpmemZlemVmZWR6ZXplZg$rqZkhxu5YbqCGHPNrjJZpQ"
-  ),(
-    'Valeriy',
-    'Appius',
-    'valeriy.ppius@example.com',
-    'Moscow',
-    'Russian',
-    '$argon2id$v=19$m=16,t=2,p=1$emVmemVmemZlemZ6ZnpmZQ$eSetR6KPUNAGW+q+wDadcw'
-  ),(
-    'Ralf',
-    'Geronimo',
-    'ralf.geronimo@example.com',
-    'New York',
-    'Italian',
-    '$argon2id$v=19$m=16,t=2,p=1$emVmemVmemZlemZ6ZnpmZXphZGF6ZGQ$a0bg5DZB6H6v3jjQC81DXg'
-  ),(
-    'Maria',
-    'Iskandar',
-    'maria.iskandar@example.com',
-    'New York',
-    'German',
-    '$argon2id$v=19$m=16,t=2,p=1$emVmemVmemZlenplZHpkZnpmemZlemFkYXpkZA$V1qAnJDyMuuWG7g9yoGYXA'
-  ),(
-    'Jane',
-    'Doe',
-    'jane.doe@example.com',
-    'London',
-    'English',
-    '$argon2id$v=19$m=16,t=2,p=1$emVmemVmemZlenplZHpkZGZ6ZnpmZXphZGF6ZGQ$VCzq45PL9t8khtc44Kk5iw'
-  ),(
-    'Johanna',
-    'Martino',
-    'johanna.martino@example.com',
-    'Milan',
-    'Spanish',
-    '$argon2id$v=19$m=16,t=2,p=1$emVmemVmemVmemZlenplZHpkZGZ6ZnpmZXphZGF6ZGQ$UKaGZ9hGFn/S5SBQDMe/Uw'
-  );
+DROP TABLE IF EXISTS `vehicle`;
+CREATE TABLE IF NOT EXISTS `vehicle` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `vehicle_brand` VARCHAR(45) NOT NULL,
+  `autonomy` VARCHAR(45) NOT NULL,
+  `power` VARCHAR(45) NOT NULL,
+  `localisation` VARCHAR(45) NOT NULL,
+  `image` VARCHAR(200) NULL,
+  `vehicle_type` VARCHAR(45) NOT NULL,
+  `vehicle_category` VARCHAR(45) NULL,
+  `vehicle_km` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
-
-DROP TABLE IF EXISTS article;
-CREATE TABLE article (
-  id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  title varchar(255) NOT NULL,
-  content varchar(255) NOT NULL,
-  user_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES user(id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO article (title, content, user_id) VALUES ('Article 1', "Mon super contenu !!", 1),
-('Article 2', "Mon autre super contenu", 2);
-
+DROP TABLE IF EXISTS `rental`;
+CREATE TABLE IF NOT EXISTS `rental` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `rental_date` DATE NULL,
+  `rental_time` TIMESTAMP NULL,
+  `rental_status` VARCHAR(45) NULL,
+  `return_date` DATE NULL,
+  `user_id` INT NOT NULL,
+  `vehicle_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_rental_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `mydb`.`user` (`id`),
+  CONSTRAINT `fk_rental_vehicle1`
+    FOREIGN KEY (`vehicle_id`)
+    REFERENCES `mydb`.`vehicle` (`id`))
+ENGINE = InnoDB;
 
 /* On reactive la verification des clés étrangères*/
 SET foreign_key_checks = 1;
