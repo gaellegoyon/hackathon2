@@ -5,7 +5,6 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [city, setCity] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
@@ -18,7 +17,6 @@ function SignUp() {
       email,
       firstname,
       lastname,
-      city,
       password,
     });
 
@@ -65,17 +63,6 @@ function SignUp() {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="city" className="form-label">
-          City
-        </label>
-        <input
-          onChange={(e) => setCity(e.target.value)}
-          type="city"
-          className="form-control"
-          id="city"
-        />
-      </div>
-      <div className="mb-3">
         <label htmlFor="email" className="form-label">
           Email
         </label>
@@ -97,7 +84,7 @@ function SignUp() {
           id="password"
         />
       </div>
-      <button type="submit" className="btn btn-primary">
+      <button type="submit" className=" ">
         Inscription
       </button>
     </form>
