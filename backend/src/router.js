@@ -12,7 +12,7 @@ const {
 } = require("./services/auth");
 
 const authControllers = require("./controllers/authControllers");
-const articleControllers = require("./controllers/articleControllers");
+const vehicleControllers = require("./controllers/vehicleControllers");
 const userControllers = require("./controllers/userControllers");
 const fileControllers = require("./controllers/fileControllers");
 
@@ -24,12 +24,12 @@ router.post(
   verifyPassword
 );
 
-// Gestion des articles
-router.get("/api/articles", verifyToken, articleControllers.browse);
-router.get("/api/articles/:id", articleControllers.read);
-router.post("/api/articles", verifyToken, articleControllers.add);
-router.put("/api/articles/:id", verifyToken, articleControllers.edit);
-router.delete("/api/articles/:id", verifyToken, articleControllers.destroy);
+// Gestion des vehicle
+router.get("/api/vehicles", verifyToken, vehicleControllers.browse);
+router.get("/api/vehicles/:id", vehicleControllers.read);
+router.post("/api/vehicles", vehicleControllers.add);
+router.put("/api/vehicles/:id", verifyToken, vehicleControllers.edit);
+router.delete("/api/vehicles/:id", verifyToken, vehicleControllers.destroy);
 
 // Gestion des users
 router.get("/api/users", userControllers.browse);

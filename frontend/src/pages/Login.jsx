@@ -55,24 +55,18 @@ function Login() {
           <input
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            className="form-control"
             id="email"
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
+        <div>
+          <label htmlFor="password">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            className="form-control"
             id="password"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Connexion
-        </button>
+        <button type="submit">Connexion</button>
       </form>
       <div>{errorMessage}</div>
     </>
