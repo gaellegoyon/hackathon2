@@ -43,36 +43,24 @@ function Login() {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        style={{ width: "18rem" }}
-        className="m-auto mt-5"
-      >
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            className="form-control"
             id="email"
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
+        <div>
+          <label htmlFor="password">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            className="form-control"
             id="password"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Connexion
-        </button>
+        <button type="submit">Connexion</button>
       </form>
       <div>{errorMessage}</div>
     </>
