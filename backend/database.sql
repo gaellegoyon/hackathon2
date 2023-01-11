@@ -7,22 +7,24 @@ CREATE TABLE IF NOT EXISTS `user` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
-  `hashedPassword` VARCHAR(45) NOT NULL,
-  `is_admin` VARCHAR(45) NULL,
-  `is_supplier` VARCHAR(45) NULL,
+  `hashedPassword` VARCHAR(250) NOT NULL,
+  `is_admin` TINYINT NULL,
+  `is_supplier` TINYINT NULL,
+    `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `vehicle`;
 CREATE TABLE IF NOT EXISTS `vehicle` (
+  
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `vehicle_brand` VARCHAR(45) NOT NULL,
   `autonomy` VARCHAR(45) NOT NULL,
   `power` VARCHAR(45) NOT NULL,
   `localisation` VARCHAR(45) NOT NULL,
-  `image` VARCHAR(100) NULL,
+  `image` VARCHAR(200) NULL,
   `vehicle_type` VARCHAR(45) NOT NULL,
   `vehicle_category` VARCHAR(45) NULL,
   `vehicle_km` VARCHAR(45) NULL,
