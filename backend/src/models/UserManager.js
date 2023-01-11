@@ -33,10 +33,10 @@ class UserManager extends AbstractManager {
   }
 
   update(user) {
-    return this.connection.query(
-      `update ${this.table} set firstname = ?, lastname = ?, email = ?, hashedPassword = ? where id = ?`,
-      [user.firstname, user.lastname, user.email, user.hashedPassword, user.id]
-    );
+    return this.connection.query(`update ${this.table} set ? where id = ?`, [
+      user,
+      user.id,
+    ]);
   }
 
   updateAvatar(id, avatar) {

@@ -35,7 +35,7 @@ router.delete("/api/vehicles/:id", verifyToken, vehicleControllers.destroy);
 router.get("/api/users", userControllers.browse);
 router.get("/api/users/:id", userControllers.read);
 router.post("/api/users", hashPassword, verifyToken, userControllers.add);
-router.put("/api/users/:id", hashPassword, verifyToken, userControllers.edit);
+router.put("/api/users/:id", verifyToken, userControllers.edit);
 router.delete("/api/users/:id", verifyToken, userControllers.destroy);
 
 // Gestion des avatars
