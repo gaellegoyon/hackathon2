@@ -62,7 +62,7 @@ function Login() {
   };
 
   return (
-    <div className="w-full h-[90vh] bg-[#171717]">
+    <div className="w-full h-[100vh] bg-[#171717]">
       <div className=" flex justify-center pt-10">
         <img src={logo} alt="logo" className="w-[60%]" />
       </div>
