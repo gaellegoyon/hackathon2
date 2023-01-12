@@ -120,7 +120,7 @@ function ManageVehicle() {
               // onChange={(e) => setSeat(e.target.value)}
             />
           </div>
-          <div className="pt-8">
+          <div className="pt-6 flex items-center justify-center">
             <button type="submit" onClick={() => setModifyVehicle(true)}>
               Valider
             </button>

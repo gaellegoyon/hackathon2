@@ -89,7 +89,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 id="name"
-                label="name"
+                label="Marque"
                 name="name"
                 autoComplete="name"
                 autoFocus
@@ -100,7 +100,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="vehicle_brand"
-                label="vehicle_brand"
+                label="Model"
                 type="vehicle_brand"
                 id="vehicle_brand"
                 autoComplete="current-vehicle_brand"
@@ -111,7 +111,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="autonomy"
-                label="autonomy"
+                label="Autonomie"
                 type="autonomy"
                 id="autonomy"
                 autoComplete="current-autonomy"
@@ -122,7 +122,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="power"
-                label="power"
+                label="Puissance"
                 type="power"
                 id="power"
                 autoComplete="current-power"
@@ -133,7 +133,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="localisation"
-                label="localisation"
+                label="Localisation"
                 type="localisation"
                 id="localisation"
                 autoComplete="current-localisation"
