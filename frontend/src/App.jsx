@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/App.css";
 
-import Profil from "./pages/Profil";
+import Profil from "@pages/Profil";
+import Map from "@pages/Map";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/avatar" element={<Avatar />} />
           <Route path="/manageUser" element={<UserManage />} />
           <Route path="/profil" element={<Profil />} />
+          <Route path="/map" element={<Map />} />
         </Routes>
       </CurrentUserContextProvider>
     </BrowserRouter>
