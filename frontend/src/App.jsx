@@ -13,6 +13,7 @@ import Message from "./pages/Message";
 import Avatar from "./pages/Avatar";
 import UserManage from "./components/UserManage";
 import UserInfo from "./pages/UserInfo";
+import VehicleDetail from "./pages/VehicleDetail";
 
 import { CurrentUserContextProvider } from "./contexts/userContext";
 import AddVehicle from "./components/AddVehicle";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/userInfo" element={<UserInfo />} />
           <Route path="/profil" element={<Profil />} />
           <Route path="/addVehicle" element={<AddVehicle />} />
+          <Route path="/vehicleDetail" element={<VehicleDetail />} />
           <Route path="/map" element={<Map />} />
           <Route path="/reception" element={<InCome />} />
           <Route path="/mail" element={<BigMail />} />

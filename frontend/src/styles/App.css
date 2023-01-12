@@ -280,3 +280,7 @@ body {
   background-color: #890000;
   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
+
+.MuiBottomNavigationAction-root {
+  color: #890000 !important;
+}

@@ -1,8 +1,11 @@
+/* eslint-disable import/order */
 import React from "react";
 import ModalConfirm from "@components/ModalConfirm";
 import { useCurrentUserContext } from "../contexts/userContext";
+import { useNavigate } from "react-router-dom";
 
 function CardVehicle() {
+  const navigate = useNavigate();
   const { handleClickOpen } = useCurrentUserContext();
   return (
     <div className="flex justify-center mt-[1rem]">
@@ -21,7 +24,11 @@ function CardVehicle() {
         >
           Réserver
         </button>
-        <button type="button" className="relative bottom-10 button-card2 m-2">
+        <button
+          type="button"
+          className="relative bottom-10 button-card2 m-2"
+          onClick={() => navigate("/vehicleDetail")}
+        >
           Détails
         </button>
       </div>

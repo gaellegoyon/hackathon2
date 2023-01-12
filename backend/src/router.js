@@ -48,4 +48,9 @@ router.post(
 );
 router.get("/api/avatars/:fileName", fileControllers.sendAvatar);
 
+// Message
+
+router.post("/api/message", verifyToken, userControllers.sendMessage);
+router.get("/api/message/:id", userControllers.sendMessage);
+
 module.exports = router;

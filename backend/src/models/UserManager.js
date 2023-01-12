@@ -46,6 +46,13 @@ class UserManager extends AbstractManager {
     );
   }
 
+  sendMessage(id) {
+    return this.connection.query(
+      `select message, from  ${this.table} where id = ?`,
+      [id]
+    );
+  }
+
   delete(id) {
     return this.connection.query(`delete from ${this.table} where id = ?`, [
       id,

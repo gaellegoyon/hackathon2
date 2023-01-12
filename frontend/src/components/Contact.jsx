@@ -21,6 +21,7 @@ const darkTheme = createTheme({
 function Contact() {
   const { setUser, setToken } = useCurrentUserContext();
   const [email, setEmail] = useState("");
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
@@ -42,12 +43,12 @@ function Contact() {
 
     if (email) {
       // on appelle le back
-      fetch("http://localhost:5000/api/login", requestOptions)
+      fetch("http://localhost:5000/api/message", requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setUser(result.user);
           setToken(result.token);
-          navigate("/");
+          navigate("/message");
         })
         .catch(console.error);
     } else {
@@ -154,6 +155,7 @@ function Contact() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, background: "#890000", color: "white" }}
+                submit={handleSubmit}
               >
                 Envoyer
               </Button>
