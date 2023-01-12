@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `lastname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
   `hashedPassword` VARCHAR(250) NOT NULL,
-  `is_admin` VARCHAR(45) NULL,
-  `is_supplier` VARCHAR(45) NULL,
+  `is_admin` TINYINT NULL,
+  `is_supplier` TINYINT NULL,
     `avatar` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)

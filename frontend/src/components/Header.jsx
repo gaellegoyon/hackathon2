@@ -2,17 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-props-no-spreading */
 import { Link, useNavigate } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
+import DefaultAvatar from "./DefaultAvatar";
 import { useCurrentUserContext } from "../contexts/userContext";
-
-function stringAvatar(name) {
-  return {
-    sx: {
-      bgcolor: "#890000",
-    },
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-  };
-}
 
 // const BACK_END_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -28,6 +19,10 @@ function Header() {
     navigate("/");
   };
 
+  const avatarOption =
+    "w-[45px] h-[45px] rounded-full bg-[#890000] flex justify-center items-center border-[2px] border-black ";
+
+  const avatarTextOption = "text-white font-main-font text-xl font-medium";
   return (
     <nav className="w-full h-[7vh] bg-white fixed z-50 navbar">
       <div>
@@ -43,8 +38,9 @@ function Header() {
                 </li>
                 <li className="mr-4">
                   {/* TODO lien vers le profil */}
-                  <Avatar
-                    {...stringAvatar(`${user.firstname} ${user.lastname}`)}
+                  <DefaultAvatar
+                    avatarOption={avatarOption}
+                    avatarTextOption={avatarTextOption}
                   />
                 </li>
               </>
