@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function CardVehicle() {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-center mt-[1rem]">
       <div className="w-[95%] h-[20vh] card">
@@ -14,7 +16,11 @@ function CardVehicle() {
         <button type="button" className="relative bottom-10 button-card1 m-2">
           Réserver
         </button>
-        <button type="button" className="relative bottom-10 button-card2 m-2">
+        <button
+          type="button"
+          className="relative bottom-10 button-card2 m-2"
+          onClick={() => navigate("/vehicleDetail")}
+        >
           Détails
         </button>
       </div>
