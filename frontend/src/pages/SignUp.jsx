@@ -5,7 +5,6 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
