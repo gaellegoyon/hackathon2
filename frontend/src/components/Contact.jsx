@@ -73,8 +73,8 @@ function Contact() {
   ];
 
   return (
-    <div className="w-full h-[100vh] bg-[#171717] relative bottom-12">
-      <div className=" flex justify-center pt-10">
+    <div className="w-full h-[90vh] bg-[#171717] relative bottom-16">
+      <div className=" flex justify-center pt-6">
         <img src={logo} alt="logo" className="w-[60%]" />
       </div>
       <ThemeProvider theme={darkTheme}>

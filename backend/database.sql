@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `lastname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
   `message` text NULL,
+  `objet` VARCHAR(200) NULL,
   `hashedPassword` VARCHAR(250) NOT NULL,
   `is_admin` TINYINT NULL,
   `is_supplier` TINYINT NULL,
@@ -29,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `vehicle` (
   `vehicle_type` VARCHAR(45) NOT NULL,
   `vehicle_category` VARCHAR(45) NULL,
   `vehicle_km` VARCHAR(45) NULL,
+  `seat` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

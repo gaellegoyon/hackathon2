@@ -1,4 +1,6 @@
+/* eslint-disable import/no-unresolved */
 import React from "react";
+import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import ChatIcon from "@mui/icons-material/Chat";
@@ -7,11 +9,11 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
+  const navigate = useNavigate();
   return (
     <div>
-      <div className="w-full absolute bottom-0">
+      <Box sx={{ width: "100vw", position: "absolute", bottom: 0 }}>
         <BottomNavigation
           showLabels
           value={value}
@@ -37,7 +39,7 @@ function Navbar() {
               "&:focus": { color: "#890000" },
               "&:active": { color: "#890000" },
             }}
-            onClick={() => navigate("/Map")}
+            onClick={() => navigate("/map")}
           />
           <BottomNavigationAction
             icon={
@@ -69,7 +71,7 @@ function Navbar() {
             onClick={() => navigate("/reception")}
           />
         </BottomNavigation>
-      </div>
+      </Box>
     </div>
   );
 }
