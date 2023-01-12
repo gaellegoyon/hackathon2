@@ -1,22 +1,19 @@
 import React from "react";
+import DefaultAvatar from "@components/DefaultAvatar";
 import { useNavigate } from "react-router-dom";
-import DefaultAvatar from "../components/DefaultAvatar";
 
-function Profil() {
+function BigMail() {
   const avatarOption =
-    "w-[140px] h-[140px] rounded-full bg-[#890000] flex justify-center items-center border-[2px] border-black";
+    "w-[120px] h-[120px] rounded-full bg-[#890000] flex justify-center items-center border-[2px] border-black";
 
   const avatarTextOption = "text-white font-main-font text-5xl font-medium";
 
   const navigate = useNavigate();
+  const goBack = () => navigate(-1);
   return (
     <div>
       <div className="flex justify-end">
-        <button
-          type="button"
-          className="back mt-8 mr-4"
-          onClick={() => navigate("/")}
-        >
+        <button type="button" className="back mt-8 mr-4 z-50" onClick={goBack}>
           <svg
             height="25"
             width="25"
@@ -29,32 +26,29 @@ function Profil() {
           </svg>
         </button>
       </div>
-      <div className="flex flex-col items-center justify-center mt-[5rem]">
+      <div className="flex flex-col justify-center items-center">
         <DefaultAvatar
           avatarOption={avatarOption}
           avatarTextOption={avatarTextOption}
         />
+        <div className="mt-16 flex justify-center items-center bg-white w-[80%] rounded-xl h-[5vh]">
+          <p className=" pl-6 pr-2 pt-6 pb-6 text-[16px]">Objet : </p>
 
-        <button
-          type="button"
-          className="button2 m-6 mt-14 w-[60%]"
-          onClick={() => navigate("/UserInfo")}
-        >
-          Mes informations
-        </button>
-        <button type="button" className="button2 m-6 w-[60%]">
-          Mes réservations
-        </button>
-        <button
-          type="button"
-          className="button2 m-6 w-[60%]"
-          onClick={() => navigate("/message")}
-        >
-          Contact
-        </button>
+          <p className="  pr-6 pt-6 pb-6 text-[16px]">
+            qsfsqfqsfqsfqsfqsfqsfqsfqsf
+          </p>
+        </div>
+        <div className="p-8 mt-8 flex justify-center items-center bg-white w-[90%] rounded-2xl h-[30vh]">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, impedit
+            nostrum, quae quia distinctio sequi esse, sapiente optio aperiam
+            ducimus eos ipsam. Sed ex omnis reprehenderit, quo ab obcaecati
+            ipsum?
+          </p>
+        </div>
       </div>
     </div>
   );
 }
 
-export default Profil;
+export default BigMail;

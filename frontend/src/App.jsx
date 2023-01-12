@@ -2,8 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/App.css";
 
-import Profil from "./pages/Profil";
-import Map from "./pages/Map";
+import Profil from "@pages/Profil";
+import Map from "@pages/Map";
+import InCome from "@pages/InCome";
+import BigMail from "@pages/BigMail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -32,6 +34,8 @@ function App() {
           <Route path="/addVehicle" element={<AddVehicle />} />
           <Route path="/vehicleDetail" element={<VehicleDetail />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/reception" element={<InCome />} />
+          <Route path="/mail" element={<BigMail />} />
         </Routes>
       </CurrentUserContextProvider>
     </BrowserRouter>
