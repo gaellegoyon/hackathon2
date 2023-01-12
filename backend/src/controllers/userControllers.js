@@ -89,6 +89,22 @@ const updateAvatar = (req, res) => {
     });
 };
 
+const sendMessage = (req, res) => {
+  const id = req.payloads.sub;
+  const { message } = req;
+
+  models.user
+    .sendMessage(id, message)
+    .then(([result]) => {
+      if (result.affectedRows === 0) res.sendStatus(404);
+      else res.status(202).send({ message });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -96,4 +112,5 @@ module.exports = {
   edit,
   destroy,
   updateAvatar,
+  sendMessage,
 };
