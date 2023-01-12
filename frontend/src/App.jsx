@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Articles from "./pages/Articles";
 import Avatar from "./pages/Avatar";
-import UserManage from "./components/UserManage";
+import Profil from "./pages/Profil";
 
 import { CurrentUserContextProvider } from "./contexts/userContext";
 
@@ -21,7 +21,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/avatar" element={<Avatar />} />
-          <Route path="/manageUser" element={<UserManage />} />
+          <Route path="/profil" element={<Profil />} />
         </Routes>
       </CurrentUserContextProvider>
     </BrowserRouter>
