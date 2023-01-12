@@ -66,7 +66,7 @@ function Navbar() {
               "&:focus": { color: "#890000" },
               "&:active": { color: "#890000" },
             }}
-            onClick={() => navigate("/Message")}
+            onClick={() => navigate("/reception")}
           />
         </BottomNavigation>
       </div>
