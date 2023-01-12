@@ -3,6 +3,7 @@ const multer = require("multer");
 
 const router = express.Router();
 const upload = multer({ dest: process.env.AVATAR_DIRECTORY });
+const uploads = multer({ dest: process.env.VEHICLE_DIRECTORY });
 
 // services d'auth
 const {
@@ -15,6 +16,7 @@ const authControllers = require("./controllers/authControllers");
 const vehicleControllers = require("./controllers/vehicleControllers");
 const userControllers = require("./controllers/userControllers");
 const fileControllers = require("./controllers/fileControllers");
+const vehicleFileControllers = require("./controllers/vehicleFileControllers");
 
 // Auth
 router.post("/api/register", hashPassword, userControllers.add);
@@ -47,5 +49,16 @@ router.post(
   userControllers.updateAvatar
 );
 router.get("/api/avatars/:fileName", fileControllers.sendAvatar);
+
+// Gestion des vehicles
+router.post(
+  "/api/vehicles/image",
+  verifyToken,
+  uploads.single("vehicle"),
+  vehicleFileControllers.renameVehicle,
+  vehicleFileControllers.sendVehicle,
+  vehicleControllers.addVehicle
+);
+router.get("/api/vehicles/:fileName", vehicleFileControllers.sendVehicle);
 
 module.exports = router;
