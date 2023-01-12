@@ -1,26 +1,17 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
-import fr from "react-date-range/dist/locale";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./home.css";
-import { DateRange } from "react-date-range";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
+import DatePicker from "react-datepicker";
 import CardVehicle from "../components/CardVehicle";
 import Header from "../components/Header";
 import NavBar from "../components/NavBar";
 import "react-day-picker/dist/style.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 function Home() {
-  const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
+  const [startTime, setStartTime] = useState(new Date());
+  const [endTime, setEndTime] = useState(new Date());
   return (
     <div className=" overflow-auto h-[94vh]">
       <Header />
@@ -30,35 +21,36 @@ function Home() {
             {" "}
             Selectionnez vos dates de reservation
           </span>
-          <FontAwesomeIcon
-            icon={faCalendarDays}
-            className="text-white headerIcon"
+          <DatePicker
+            selectsRange
+            startDate={startDate}
+            endDate={endDate}
+            onChange={(update) => {
+              setDateRange(update);
+            }}
+            isClearable
           />
-          <button
-            type="button"
-            onClick={() => setOpenDate(!openDate)}
-            className="text-white headerSearchText"
-          >
-            {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
-              date[0].endDate,
-              "MM/dd/yyyy"
-            )}`}
-          </button>
-          {openDate && (
-            <DateRange
-              locale={fr}
-              editableDateInputs
-              onChange={(item) => setDate([item.selection])}
-              moveRangeOnFirstSelection={false}
-              ranges={date}
-              className=" mt-36 flex justify-center date"
-              minDate={new Date()}
-              rangeColors={["#890000"]}
-            />
-          )}
+          <DatePicker
+            selected={startTime}
+            onChange={(date) => setStartTime(date)}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={15}
+            timeCaption="Time"
+            dateFormat="h:mm aa"
+          />
+          <DatePicker
+            selected={endTime}
+            onChange={(date) => setEndTime(date)}
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={15}
+            timeCaption="Time"
+            dateFormat="h:mm aa"
+          />
         </div>
       </div>
-      <div className="mt-96">
+      <div className="mt-42">
         <CardVehicle />
         <CardVehicle />
         <CardVehicle />
