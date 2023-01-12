@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
-import Header from "@components/Header";
-import Navbar from "@components/Navbar";
-import "leaflet/dist/leaflet.css";
-import Geolocalisation from "@components/Geolocalisation";
-import geo from "@assets/geo.svg";
 import L from "leaflet";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import "leaflet/dist/leaflet.css";
+import Geolocalisation from "../components/Geolocalisation";
+import geo from "../assets/geo.svg";
 
 const location = [45.764043, 4.835659];
 const zoom = 12;
