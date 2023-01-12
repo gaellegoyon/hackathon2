@@ -1,5 +1,4 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import ChatIcon from "@mui/icons-material/Chat";
@@ -12,7 +11,7 @@ function Navbar() {
   const [value, setValue] = React.useState(0);
   return (
     <div>
-      <Box sx={{ width: "100vw", position: "absolute", bottom: 0 }}>
+      <div className="w-full absolute bottom-0">
         <BottomNavigation
           showLabels
           value={value}
@@ -42,9 +41,10 @@ function Navbar() {
               "&:hover": { color: "#890000" },
               "&:focus": { color: "#890000" },
             }}
+            onClick={() => navigate("/Message")}
           />
         </BottomNavigation>
-      </Box>
+      </div>
     </div>
   );
 }
