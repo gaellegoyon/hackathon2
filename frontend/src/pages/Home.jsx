@@ -1,7 +1,6 @@
 import React from "react";
 import CardVehicle from "../components/CardVehicle";
 import Header from "../components/Header";
-import NavBar from "../components/NavBar";
 
 function Home() {
   return (
@@ -14,7 +13,6 @@ function Home() {
         <CardVehicle />
         <CardVehicle />
       </div>
-      <NavBar />
     </div>
   );
 }

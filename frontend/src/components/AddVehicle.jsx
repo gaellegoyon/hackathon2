@@ -7,7 +7,9 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { InputLabel, NativeSelect } from "@mui/material";
 import { useCurrentUserContext } from "../contexts/userContext";
+import ManageVehicle from "./ManageVehicle";
 
 function AddVehicle() {
   const { token } = useCurrentUserContext();
@@ -17,6 +19,7 @@ function AddVehicle() {
   const [power, setPower] = useState("");
   const [localisation, setLocalisation] = useState("");
   const [vehicle_type, setVehicleType] = useState("");
+  const [seat, setSeat] = useState("");
   const [msg, setMsg] = useState("");
 
   const darkTheme = createTheme({
@@ -37,6 +40,7 @@ function AddVehicle() {
       power,
       localisation,
       vehicle_type,
+      seat,
     });
 
     const requestOptions = {
@@ -134,17 +138,23 @@ function AddVehicle() {
                 id="localisation"
                 autoComplete="current-localisation"
               />
-              <TextField
-                onChange={(e) => setVehicleType(e.target.value)}
-                margin="normal"
-                required
-                fullWidth
-                name="vehicletype"
-                label="vehicletype"
-                type="vehicletype"
+
+              <InputLabel htmlFor="seat">Siège</InputLabel>
+              <NativeSelect id="seat" onChange={(e) => setSeat(e.target.value)}>
+                <option>Select</option>
+                <option value="5">5</option>
+                <option value="2">2</option>
+              </NativeSelect>
+              <InputLabel htmlFor="vehicletype">Type</InputLabel>
+              <NativeSelect
                 id="vehicletype"
-                autoComplete="current-vehicletype"
-              />
+                onChange={(e) => setVehicleType(e.target.value)}
+              >
+                <option>Select</option>
+                <option value="Voiture">Voiture</option>
+                <option value="Scooter">Scooter</option>
+                <option value="Vélo">Vélo</option>
+              </NativeSelect>
 
               <Button
                 type="submit"
@@ -159,6 +169,7 @@ function AddVehicle() {
         </Container>
         {msg}
       </ThemeProvider>
+      <ManageVehicle />
     </div>
   );
 }
