@@ -60,21 +60,32 @@ body {
 }
 
 .vehicles-list {
-  width: 100%;
-  margin: auto;
+  width: 90vw;
   display: flex;
+  margin: auto;
 }
 .vehicles-list li {
   text-align: center;
   margin: 1px;
-  width: 10vw;
-  height: 50px;
+  width: 15vw;
+  height: 40px;
   background-color: #b8aeae;
+  font-size: 0.8rem;
 }
 .vehicles-list input {
   text-align: center;
   margin: 1px;
-  width: 10vw;
+  width: 15vw;
+  height: 40px;
+  background-color: #d6cfcf;
+  display: flex;
+  flex-direction: column;
+}
+.vehicles-list button {
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 1px;
+  width: 13vw;
   height: 40px;
   background-color: #d6cfcf;
   display: flex;
