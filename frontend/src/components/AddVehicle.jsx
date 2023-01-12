@@ -12,6 +12,7 @@ import { useCurrentUserContext } from "../contexts/userContext";
 import ManageVehicle from "./ManageVehicle";
 
 function AddVehicle() {
+  // const vehicleRef = useRef(null);
   const { token } = useCurrentUserContext();
   const [name, setName] = useState("");
   const [vehicle_brand, setVehicleBrand] = useState("");
@@ -20,7 +21,43 @@ function AddVehicle() {
   const [localisation, setLocalisation] = useState("");
   const [vehicle_type, setVehicleType] = useState("");
   const [seat, setSeat] = useState("");
-  const [msg, setMsg] = useState("");
+  const [msg, setMsg] = useState("Aucun upload effectué");
+  const [image, setImage] = useState("");
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (vehicleRef.current.files[0]) {
+  //     // recupération des articles.
+  //     const myHeader = new Headers();
+  //     myHeader.append("Authorization", `Bearer ${token}`);
+
+  //     const formData = new FormData();
+  //     formData.append("vehicle", vehicleRef.current.files[0]);
+
+  //     const requestOptions = {
+  //       method: "POST",
+  //       headers: myHeader,
+  //       body: formData,
+  //     };
+  //     // on appelle le back
+  //     fetch("http://localhost:5000/api/vehicles/image", requestOptions)
+  //       .then((response) => response.json())
+  //       .then((results) => {
+  //         // maj avatar
+  //         setImage(results.image);
+  //         console.warn(results);
+  //         setMsg("Upload réussi !");
+  //       })
+  //       .catch((error) => {
+  //         console.error(error);
+  //         setMsg("Upload échoué !");
+  //       });
+  //   } else {
+  //     setMsg(
+  //       "Vous auriez pas oublié un truc ? Le fichier à uploader, par exemple ?"
+  //     );
+  //   }
+  // };
 
   const darkTheme = createTheme({
     palette: {
@@ -29,6 +66,8 @@ function AddVehicle() {
   });
 
   const handleForm = (e) => {
+    e.preventDefault();
+    // handleSubmit(e); // On appelle handleSubmit avant de créer le véhicule
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", `Bearer ${token}`);
@@ -41,6 +80,7 @@ function AddVehicle() {
       localisation,
       vehicle_type,
       seat,
+      image,
     });
 
     const requestOptions = {
@@ -82,6 +122,7 @@ function AddVehicle() {
               onSubmit={handleForm}
               noValidate
               sx={{ mt: 1 }}
+              encType="multipart/form-data"
             >
               <TextField
                 onChange={(e) => setName(e.target.value)}
@@ -155,8 +196,30 @@ function AddVehicle() {
                 <option value="Scooter">Scooter</option>
                 <option value="Vélo">Vélo</option>
               </NativeSelect>
+              <InputLabel htmlFor="catalogue véhicule">
+                catalogue véhicule
+              </InputLabel>
+              <NativeSelect
+                id="image"
+                onChange={(e) => setImage(e.target.value)}
+              >
+                <option>Selectionner un véhicule</option>
+                <option value="backend/public/uploads_vehicle/08ed068a-c573-4a2b-80a6-9d6566a63f96-Renault_Twingo_E-Tech.png">
+                  renault twingo e-tech
+                </option>
+                <option value="backend/public/uploads_vehicle/9378d415-0804-4aba-81fa-dae7ff9a8727-LYON2.jpeg">
+                  toyota prius
+                </option>
+              </NativeSelect>
+
+              {/* <input
+                type="file"
+                ref={vehicleRef}
+                onChange={(e) => setImage(e.target.value)}
+              /> */}
 
               <Button
+                onSubmit={handleForm}
                 type="submit"
                 fullWidth
                 variant="contained"

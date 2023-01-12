@@ -72,6 +72,7 @@ function ManageVehicle() {
               <li>{vehicle.localisation}</li>
               <li>{vehicle.vehicle_type}</li>
               <li>{vehicle.seat}</li>
+              <img src={vehicle.image} alt="vehicle" />
               <button type="submit" onClick={() => deleteVehicle(vehicle.id)}>
                 X
               </button>
