@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `vehicle` (
   `vehicle_type` VARCHAR(45) NOT NULL,
   `vehicle_category` VARCHAR(45) NULL,
   `vehicle_km` VARCHAR(45) NULL,
+  `seat` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

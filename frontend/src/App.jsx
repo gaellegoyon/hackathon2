@@ -12,6 +12,7 @@ import Avatar from "./pages/Avatar";
 import UserManage from "./components/UserManage";
 
 import { CurrentUserContextProvider } from "./contexts/userContext";
+import AddVehicle from "./components/AddVehicle";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/avatar" element={<Avatar />} />
           <Route path="/manageUser" element={<UserManage />} />
           <Route path="/profil" element={<Profil />} />
+          <Route path="/addVehicle" element={<AddVehicle />} />
           <Route path="/map" element={<Map />} />
         </Routes>
       </CurrentUserContextProvider>
