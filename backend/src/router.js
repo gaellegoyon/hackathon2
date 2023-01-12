@@ -18,8 +18,7 @@ const fileControllers = require("./controllers/fileControllers");
 
 // Auth
 router.post("/api/register", hashPassword, userControllers.add);
-router.post(
-  "/api/login",
+router.post("/api/login",
   authControllers.getUserByEmailWithPasswordAndPassToNext,
   verifyPassword
 );
