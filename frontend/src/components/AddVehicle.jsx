@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -21,6 +21,8 @@ function AddVehicle() {
   const [vehicle_type, setVehicleType] = useState("");
   const [seat, setSeat] = useState("");
   const [msg, setMsg] = useState("");
+  const [count, setCount] = useState(0);
+  const [addCount, setAddCount] = useState(0);
 
   const darkTheme = createTheme({
     palette: {
@@ -28,33 +30,37 @@ function AddVehicle() {
     },
   });
 
-  const handleForm = (e) => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", `Bearer ${token}`);
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", `Bearer ${token}`);
+  const body = JSON.stringify({
+    name,
+    vehicle_brand,
+    autonomy,
+    power,
+    localisation,
+    vehicle_type,
+    seat,
+  });
 
-    const body = JSON.stringify({
-      name,
-      vehicle_brand,
-      autonomy,
-      power,
-      localisation,
-      vehicle_type,
-      seat,
-    });
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body,
+  };
 
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body,
-    };
-    e.preventDefault();
-    // on créé et on redirige
+  useEffect(() => {
     fetch("http://localhost:5000/api/vehicles", requestOptions)
       .then(() => {
         setMsg("Véhicule ajoutée");
       })
       .catch(console.error);
+  }, [addCount]);
+
+  const handleForm = (e) => {
+    setAddCount(addCount + 1);
+    e.preventDefault();
+    // on créé et on redirige
   };
 
   return (
@@ -79,7 +85,7 @@ function AddVehicle() {
             </Typography>
             <Box
               component="form"
-              onSubmit={handleForm}
+              onSubmit={() => handleForm()}
               noValidate
               sx={{ mt: 1 }}
             >
@@ -89,7 +95,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 id="name"
-                label="name"
+                label="Marque"
                 name="name"
                 autoComplete="name"
                 autoFocus
@@ -100,7 +106,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="vehicle_brand"
-                label="vehicle_brand"
+                label="Model"
                 type="vehicle_brand"
                 id="vehicle_brand"
                 autoComplete="current-vehicle_brand"
@@ -111,7 +117,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="autonomy"
-                label="autonomy"
+                label="Autonomie"
                 type="autonomy"
                 id="autonomy"
                 autoComplete="current-autonomy"
@@ -122,7 +128,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="power"
-                label="power"
+                label="Puissance"
                 type="power"
                 id="power"
                 autoComplete="current-power"
@@ -133,7 +139,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="localisation"
-                label="localisation"
+                label="Localisation"
                 type="localisation"
                 id="localisation"
                 autoComplete="current-localisation"
@@ -169,7 +175,12 @@ function AddVehicle() {
         </Container>
         {msg}
       </ThemeProvider>
-      <ManageVehicle />
+      <ManageVehicle
+        count={count}
+        setCount={setCount}
+        addCount={addCount}
+        setAddCount={setAddCount}
+      />
     </div>
   );
 }
