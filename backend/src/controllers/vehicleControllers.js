@@ -27,7 +27,7 @@ const read = (req, res) => {
     });
 };
 
-const add = (req, res) => {
+const addVehicle = (req, res) => {
   const vehicle = req.body;
   models.vehicle
     .insert(vehicle)
@@ -73,7 +73,7 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
-  add,
+  addVehicle,
   edit,
   destroy,
 };

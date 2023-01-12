@@ -23,6 +23,7 @@
     "date-fns": "^2.29.3",
     "flowbite": "^1.6.1",
     "flowbite-react": "^0.3.7",
+    "leaflet": "^1.9.3",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-date-range": "^1.4.0",
@@ -30,7 +31,9 @@
     "react-datetime": "^3.2.0",
     "react-day-picker": "^8.4.1",
     "react-dom": "^18.0.0",
+    "react-leaflet": "^4.2.0",
     "react-router-dom": "^6.5.0",
+    "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6",
     "template-fullstack": "file:.."
   },

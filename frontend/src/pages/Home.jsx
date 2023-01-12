@@ -3,7 +3,7 @@ import "./home.css";
 import DatePicker from "react-datepicker";
 import CardVehicle from "../components/CardVehicle";
 import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 import "react-day-picker/dist/style.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -57,7 +57,7 @@ function Home() {
         <CardVehicle />
         <CardVehicle />
       </div>
-      <NavBar />
+      <Navbar />
     </div>
   );
 }
