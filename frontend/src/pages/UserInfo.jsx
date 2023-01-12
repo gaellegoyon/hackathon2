@@ -89,12 +89,13 @@ function UserInfo() {
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
             viewBox="0 0 1024 1024"
+            fill="white"
           >
             <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z" />
           </svg>
         </button>
       </div>
-      <div className="flex flex-col items-center justify-center mt-[5rem]">
+      <div className="flex flex-col items-center justify-center mt-[3rem]">
         <DefaultAvatar
           avatarOption={avatarOption}
           avatarTextOption={avatarTextOption}
@@ -102,41 +103,41 @@ function UserInfo() {
         <form
           encType="multipart/form-data"
           onSubmit={handleSubmit}
-          className="flex flex-col items-center justify-center mt-[1rem]"
+          className="flex flex-col items-center justify-center mt-[3rem]"
         >
           <input
             type="file"
             ref={avatarRef}
             id="file"
-            className="bblock w-full text-sm text-slate-500
+            className="bblock w-full mt-4 mb-4 text-sm text-slate-500
             file:mr-4 file:py-2 file:px-4
             file:rounded-full file:border-0
             file:text-sm file:font-semibold
             file:bg-[#890000]-50 file:text-[#890000]-700
             hover:file:bg-[#890000]-100"
           />
-          <button type="submit" className="button2 mb-5 mt-5">
+          <button type="submit" className="button3 mb-20 mt-5">
             Valider
           </button>
-          <p>{msg}</p>
+          <p className="text-white">{msg}</p>
         </form>
-        <div className="bg-white dark:bg-slate-100 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl w-80">
+        <div className=" w-full">
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-slate-900 dark:text-black mt-5 text-[2rem] font-large tracking-tight">
-              {user.firstname}
-            </h3>
-            <h3 className="text-slate-900 dark:text-black mt-5 text-[2rem] tracking-tight">
-              {user.lastname}
-            </h3>
-            <h3 className="text-slate-900 dark:text-black mt-5 text-[2rem] tracking-tight">
-              {user.email}
-            </h3>
+            <div className="pb-4 bg-[#6e6e6e] text-white flex justify-center items-center w-[80%] rounded-xl mb-4 h-[5vh]">
+              <h3 className="mt-5 text-[1.1rem] ">{user.firstname}</h3>
+            </div>
+            <div className="pb-4 bg-[#6e6e6e] text-white flex justify-center items-center w-[80%] rounded-xl mb-4 h-[5vh]">
+              <h3 className="  mt-5 text-[1.1rem] ">{user.lastname}</h3>
+            </div>
+            <div className=" pb-4 bg-[#6e6e6e] text-white flex justify-center items-center w-[80%] rounded-xl h-[5vh]">
+              <h3 className=" mt-5 text-[1.1rem] ">{user.email}</h3>
+            </div>
           </div>
         </div>
 
         <button
           type="submit"
-          className="button2 mb-5 mt-10"
+          className="button3 mb-5 mt-10"
           onClick={() => navigate("/message")}
         >
           Modifier mes informations

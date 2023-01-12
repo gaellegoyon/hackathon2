@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(200) NOT NULL,
+  `message` text NULL,
+  `objet` VARCHAR(200) NULL,
   `hashedPassword` VARCHAR(250) NOT NULL,
   `is_admin` TINYINT NULL,
   `is_supplier` TINYINT NULL,
