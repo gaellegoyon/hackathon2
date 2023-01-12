@@ -12,6 +12,13 @@ export function CurrentUserContextProvider({ children }) {
   const [user, setUser] = useLocalStorage("user", {});
   const [token, setToken] = useLocalStorage("token", "");
   const [geoUser, setGeoUser] = useState([]);
+  const [active, setActive] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [dist, setDist] = useState();
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
@@ -23,6 +30,13 @@ export function CurrentUserContextProvider({ children }) {
         setToken,
         geoUser,
         setGeoUser,
+        setActive,
+        active,
+        open,
+        setOpen,
+        handleClickOpen,
+        dist,
+        setDist,
       }}
     >
       {children}

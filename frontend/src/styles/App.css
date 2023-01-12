@@ -157,3 +157,31 @@ body {
   box-shadow: 9px 9px 33px #000000, -9px -9px 33px #000000;
   transform: translateY(-2px);
 }
+
+.filter-card {
+  border-radius: 15px;
+  background: #6e6e6e;
+  width: 20vw;
+}
+
+.filter-card:focus {
+  border-radius: 15px;
+  background: #890000;
+  width: 20vw;
+}
+
+.filter-map {
+  border-radius: 15px;
+  background: #890000;
+  width: 20vw;
+}
+
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 0;
+  padding-right: 0 !important;
+  border: none !important;
+}
+
+.BackdropComponent {
+  display: none;
+}

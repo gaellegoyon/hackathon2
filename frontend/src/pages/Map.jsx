@@ -6,6 +6,8 @@ import "leaflet/dist/leaflet.css";
 import Geolocalisation from "@components/Geolocalisation";
 import geo from "@assets/geo.svg";
 import L from "leaflet";
+import FilterMap from "@components/FilterMap";
+import Rayon from "@components/Rayon";
 
 const location = [45.764043, 4.835659];
 const zoom = 12;
@@ -39,6 +41,10 @@ function Map() {
           geoAct={geoAct}
         />
       </MapContainer>
+      <FilterMap />
+      <div className="absolute bottom-[38rem] ml-4 w-[20%]">
+        <Rayon />
+      </div>
       <button
         type="button"
         onClick={handleGeo}
