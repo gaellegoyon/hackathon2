@@ -66,28 +66,34 @@ body {
 }
 .vehicles-list li {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 1px;
   width: 15vw;
   height: 40px;
-  background-color: #b8aeae;
-  font-size: 0.8rem;
+  background-color: #444242;
+  font-size: 0.7rem;
 }
 .vehicles-list input {
   text-align: center;
   margin: 1px;
   width: 15vw;
   height: 40px;
-  background-color: #d6cfcf;
+  background-color: #4d4949;
   display: flex;
   flex-direction: column;
 }
 .vehicles-list button {
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 1px;
   width: 13vw;
   height: 40px;
-  background-color: #d6cfcf;
+  background-color: #585555;
   display: flex;
   flex-direction: column;
 }
