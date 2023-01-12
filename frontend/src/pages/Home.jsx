@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "./home.css";
 import DatePicker from "react-datepicker";
 import CardVehicle from "../components/CardVehicle";
 import Header from "../components/Header";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 import "react-day-picker/dist/style.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -57,7 +56,7 @@ function Home() {
         <CardVehicle />
         <CardVehicle />
       </div>
-      <Navbar />
+      {/* <Navbar /> */}
     </div>
   );
 }

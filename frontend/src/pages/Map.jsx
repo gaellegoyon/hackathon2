@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import Header from "../components/Header";
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 import "leaflet/dist/leaflet.css";
 import Geolocalisation from "../components/Geolocalisation";
 import geo from "../assets/geo.svg";
@@ -46,7 +46,7 @@ function Map() {
       >
         <img src={geo} alt="" className="w-7 h-7" />
       </button>
-      <Navbar />
+      {/* <Navbar /> */}
     </div>
   );
 }
