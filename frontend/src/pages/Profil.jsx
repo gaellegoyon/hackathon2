@@ -1,6 +1,6 @@
 import React from "react";
-import DefaultAvatar from "@components/DefaultAvatar";
 import { useNavigate } from "react-router-dom";
+import DefaultAvatar from "../components/DefaultAvatar";
 
 function Profil() {
   const avatarOption =
@@ -33,7 +33,11 @@ function Profil() {
           avatarOption={avatarOption}
           avatarTextOption={avatarTextOption}
         />
-        <button type="button" className="button2 mb-10 mt-14">
+        <button
+          type="button"
+          className="button2 mb-10 mt-14"
+          onClick={() => navigate("/UserInfo")}
+        >
           Mes informations
         </button>
         <button type="button" className="button2 m-4">
