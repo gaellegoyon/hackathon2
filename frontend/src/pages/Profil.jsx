@@ -34,11 +34,18 @@ function Profil() {
           avatarOption={avatarOption}
           avatarTextOption={avatarTextOption}
         />
-        <button type="button" className="button2 mb-10 mt-14">
+        <button type="button" className="button2 m-6 mt-14 w-[60%]">
           Mes informations
         </button>
-        <button type="button" className="button2 m-4">
+        <button type="button" className="button2 m-6 w-[60%]">
           Mes réservations
+        </button>
+        <button
+          type="button"
+          className="button2 m-6 w-[60%]"
+          onClick={() => navigate("/message")}
+        >
+          Contact
         </button>
       </div>
     </div>

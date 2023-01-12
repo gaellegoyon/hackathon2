@@ -20,18 +20,42 @@ function Navbar() {
           }}
         >
           <BottomNavigationAction
-            icon={<LocationOnIcon fontSize="large" />}
+            icon={
+              <LocationOnIcon
+                fontSize="large"
+                sx={{
+                  color: "#6e6e6e",
+                  "&:hover": { color: "#890000" },
+                  "&:focus": { color: "#890000" },
+                  "&:active": { color: "#890000" },
+                }}
+              />
+            }
             sx={{
+              color: "#6e6e6e",
               "&:hover": { color: "#890000" },
               "&:focus": { color: "#890000" },
+              "&:active": { color: "#890000" },
             }}
             onClick={() => navigate("/Map")}
           />
           <BottomNavigationAction
-            icon={<DirectionsCarFilledIcon fontSize="large" />}
+            icon={
+              <DirectionsCarFilledIcon
+                fontSize="large"
+                sx={{
+                  color: "#6e6e6e",
+                  "&:hover": { color: "#890000" },
+                  "&:focus": { color: "#890000" },
+                  "&:active": { color: "#890000" },
+                }}
+              />
+            }
             sx={{
+              color: "#890000",
               "&:hover": { color: "#890000" },
               "&:focus": { color: "#890000" },
+              "&:active": { color: "#890000" },
             }}
             onClick={() => navigate("/")}
           />
@@ -40,6 +64,7 @@ function Navbar() {
             sx={{
               "&:hover": { color: "#890000" },
               "&:focus": { color: "#890000" },
+              "&:active": { color: "#890000" },
             }}
             onClick={() => navigate("/Message")}
           />
