@@ -1,5 +1,5 @@
 import React from "react";
-import DefaultAvatar from "@components/DefaultAvatar";
+import DefaultAvatar from "../components/DefaultAvatar";
 
 function Profil() {
   const avatarOption =

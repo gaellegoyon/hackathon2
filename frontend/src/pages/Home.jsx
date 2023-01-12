@@ -1,7 +1,7 @@
 import React from "react";
 import CardVehicle from "../components/CardVehicle";
 import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 
 function Home() {
   return (
@@ -14,7 +14,7 @@ function Home() {
         <CardVehicle />
         <CardVehicle />
       </div>
-      <NavBar />
+      <Navbar />
     </div>
   );
 }

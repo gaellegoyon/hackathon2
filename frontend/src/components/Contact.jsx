@@ -5,10 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
+import { MenuItem } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
@@ -21,10 +18,9 @@ const darkTheme = createTheme({
   },
 });
 
-function Login() {
+function Contact() {
   const { setUser, setToken } = useCurrentUserContext();
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
@@ -36,7 +32,6 @@ function Login() {
 
     const body = JSON.stringify({
       email,
-      password,
     });
 
     const requestOptions = {
@@ -45,7 +40,7 @@ function Login() {
       body,
     };
 
-    if (email && password) {
+    if (email) {
       // on appelle le back
       fetch("http://localhost:5000/api/login", requestOptions)
         .then((response) => response.json())
@@ -56,9 +51,26 @@ function Login() {
         })
         .catch(console.error);
     } else {
-      setErrorMessage("Please specify email and password");
+      setErrorMessage("Please specify email");
     }
   };
+
+  const [messageType, setMessageType] = useState("");
+
+  const handleChange = (event) => {
+    setMessageType(event.target.value);
+  };
+
+  const typeOfRequest = [
+    {
+      value: "message",
+      label: "Message",
+    },
+    {
+      value: "modification",
+      label: "Modification compte",
+    },
+  ];
 
   return (
     <div className="w-full h-[100vh] bg-[#171717]">
@@ -81,7 +93,7 @@ function Login() {
               variant="h5"
               className="text-white text-main-font"
             >
-              Connexion
+              Contact
             </Typography>
             <Box
               component="form"
@@ -101,19 +113,41 @@ function Login() {
                 autoFocus
               />
               <TextField
-                onChange={(e) => setPassword(e.target.value)}
                 margin="normal"
                 required
                 fullWidth
-                name="password"
-                label="Mot de passe"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                name="object"
+                label="Objet"
+                id="object"
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" />}
-                label="Se souvenir"
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="message-type"
+                label="Type de message"
+                id="message-type"
+                select
+                value={messageType}
+                onChange={handleChange}
+                helperText="Choisir le type de demande"
+                variant="filled"
+              >
+                {typeOfRequest.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="textarea"
+                label="Message"
+                id="textarea"
+                multiline
+                rows={4}
               />
               <Button
                 type="submit"
@@ -121,15 +155,8 @@ function Login() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, background: "#890000", color: "white" }}
               >
-                Se connecter
+                Envoyer
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link to="/" variant="body2" sx={{ color: "white" }}>
-                    Vous avez oublié votre mot de passe ?
-                  </Link>
-                </Grid>
-              </Grid>
             </Box>
           </Box>
         </Container>
@@ -139,4 +166,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Contact;
