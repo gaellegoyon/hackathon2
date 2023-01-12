@@ -19,7 +19,7 @@ function Navbar() {
           }}
         >
           <BottomNavigationAction
-            icon={<LocationOnIcon fontSize="large" />}
+            icon={<LocationOnIcon sx={{ color: "#890000" }} fontSize="large" />}
             sx={{
               "&:hover": { color: "#890000" },
               "&:focus": { color: "#890000" },
