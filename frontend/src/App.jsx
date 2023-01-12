@@ -13,6 +13,7 @@ import UserManage from "./components/UserManage";
 import UserInfo from "./pages/UserInfo";
 
 import { CurrentUserContextProvider } from "./contexts/userContext";
+import AddVehicle from "./components/AddVehicle";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/manageUser" element={<UserManage />} />
           <Route path="/userInfo" element={<UserInfo />} />
           <Route path="/profil" element={<Profil />} />
+          <Route path="/addVehicle" element={<AddVehicle />} />
           <Route path="/map" element={<Map />} />
         </Routes>
       </CurrentUserContextProvider>
