@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -8,15 +9,14 @@ import { useCurrentUserContext } from "../contexts/userContext";
 // const BACK_END_URL = import.meta.env.VITE_BACKEND_URL;
 
 function Header() {
-  const { user, setUser } = useCurrentUserContext();
-
   const navigate = useNavigate();
+  const { user, setUser } = useCurrentUserContext();
 
   const handleDisconnection = () => {
     // gestion de la deconnexion
     localStorage.clear();
     setUser({});
-    navigate("/");
+    navigate("/login");
   };
 
   const avatarOption =
@@ -36,7 +36,7 @@ function Header() {
                     className="bg-disconnect bg-cover w-8 h-8 ml-4"
                   />
                 </li>
-                <li className="mr-4">
+                <li className="mr-4" onClick={() => navigate("/Profil")}>
                   {/* TODO lien vers le profil */}
                   <DefaultAvatar
                     avatarOption={avatarOption}

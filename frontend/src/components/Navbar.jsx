@@ -5,8 +5,10 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import ChatIcon from "@mui/icons-material/Chat";
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
   return (
     <div>
@@ -24,6 +26,7 @@ function Navbar() {
               "&:hover": { color: "#890000" },
               "&:focus": { color: "#890000" },
             }}
+            onClick={() => navigate("/Map")}
           />
           <BottomNavigationAction
             icon={<DirectionsCarFilledIcon fontSize="large" />}
@@ -31,6 +34,7 @@ function Navbar() {
               "&:hover": { color: "#890000" },
               "&:focus": { color: "#890000" },
             }}
+            onClick={() => navigate("/")}
           />
           <BottomNavigationAction
             icon={<ChatIcon fontSize="large" />}

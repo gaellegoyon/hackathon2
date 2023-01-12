@@ -1,7 +1,7 @@
 import React from "react";
 import CardVehicle from "../components/CardVehicle";
 import Header from "../components/Header";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Navbar";
 
 function Home() {
   return (
