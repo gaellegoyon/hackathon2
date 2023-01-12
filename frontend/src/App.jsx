@@ -14,9 +14,9 @@ import Avatar from "./pages/Avatar";
 import UserManage from "./components/UserManage";
 import UserInfo from "./pages/UserInfo";
 import VehicleDetail from "./pages/VehicleDetail";
-
 import { CurrentUserContextProvider } from "./contexts/userContext";
 import AddVehicle from "./components/AddVehicle";
+import UsersTable from "./pages/UsersTable";
 
 function App() {
   return (
@@ -35,6 +35,7 @@ function App() {
           <Route path="/vehicleDetail" element={<VehicleDetail />} />
           <Route path="/map" element={<Map />} />
           <Route path="/reception" element={<InCome />} />
+          <Route path="/usersTable" element={<UsersTable />} />
           <Route path="/mail" element={<BigMail />} />
         </Routes>
       </CurrentUserContextProvider>

@@ -48,7 +48,7 @@ function Profil() {
         <button
           type="button"
           className="button2 m-6 w-[60%]"
-          onClick={() => navigate("/message")}
+          onClick={() => navigate("/usersTable")}
         >
           Contact
         </button>
