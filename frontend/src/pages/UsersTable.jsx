@@ -4,6 +4,7 @@ import CurrentUserContext from "../contexts/userContext";
 
 export default function UsersTable() {
   const navigate = useNavigate();
+  const [count, setCount] = useState(0);
   const goBack = () => navigate(-1);
 
   const [userList, setUserList] = useState([]);
@@ -31,16 +32,18 @@ export default function UsersTable() {
   // fonction qui met à jour le status de l'utilisateur avec les PUT options ci-dessus
   const changeUserStatus = (id) => {
     fetch(`http://localhost:5000/api/users/${id}`, PUTrequestOptions);
+    setCount(count + 1);
   };
   const deleteUser = (id) => {
     fetch(`http://localhost:5000/api/users/${id}`, DELETErequestOptions);
+    setCount(count + 1);
   };
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/users/`)
       .then((res) => res.json())
       .then((user) => setUserList(user));
-  }, []);
+  }, [count]);
   return (
     <>
       <div className="flex justify-end">
@@ -73,7 +76,7 @@ export default function UsersTable() {
               </tr>
               {userList.map((user) => {
                 return (
-                  <tr className="border-b hover:bg-orange-100">
+                  <tr key={user.id} className="border-b hover:bg-orange-100">
                     <td td className="p-3 px-5">
                       <input
                         type="text"

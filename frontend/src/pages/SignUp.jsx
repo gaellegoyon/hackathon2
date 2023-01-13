@@ -60,7 +60,7 @@ function SignUp() {
           Prenom
         </label>
         <input
-          lassName="register-input"
+          className="register-input"
           onChange={(e) => setFirstname(e.target.value)}
           type="firstname"
           id="firstname"
