@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import CarFilter from "@components/CarFilter";
-import BikeFilter from "@components/BikeFilter";
-import ScooterFilter from "@components/ScooterFilter";
 import DatePicker from "react-datepicker";
+import CarFilter from "../components/CarFilter";
+import BikeFilter from "../components/BikeFilter";
+import ScooterFilter from "../components/ScooterFilter";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import CardVehicle from "../components/CardVehicle";
