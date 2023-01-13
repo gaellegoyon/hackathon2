@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/App.css";
 
-import Profil from "@pages/Profil";
-import Map from "@pages/Map";
-import InCome from "@pages/InCome";
-import BigMail from "@pages/BigMail";
+import Profil from "./pages/Profil";
+import Map from "./pages/Map";
+import InCome from "./pages/InCome";
+import BigMail from "./pages/BigMail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";

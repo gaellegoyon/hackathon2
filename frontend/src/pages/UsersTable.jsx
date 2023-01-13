@@ -6,7 +6,7 @@ export default function UsersTable() {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
-  const [userList, setUserList] = useState();
+  const [userList, setUserList] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const { token } = useContext(CurrentUserContext);
 
@@ -37,10 +37,10 @@ export default function UsersTable() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users")
+    fetch(`http://localhost:5000/api/users/`)
       .then((res) => res.json())
-      .then((user) => setUserList(user));
-  }, [changeUserStatus]);
+      .then((users) => setUserList(users));
+  }, []);
   return (
     <>
       <div className="flex justify-end">
