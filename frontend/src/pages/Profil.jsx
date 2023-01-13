@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import DefaultAvatar from "../components/DefaultAvatar";
+import CurrentUserContext from "../contexts/userContext";
 
 function Profil() {
   const avatarOption =
@@ -9,6 +10,8 @@ function Profil() {
   const avatarTextOption = "text-white font-main-font text-5xl font-medium";
 
   const navigate = useNavigate();
+  const { user } = useContext(CurrentUserContext);
+
   return (
     <div>
       <div className="flex justify-end">
@@ -34,7 +37,15 @@ function Profil() {
           avatarOption={avatarOption}
           avatarTextOption={avatarTextOption}
         />
-
+        {user.is_admin === 1 ? (
+          <div>
+            <button onClick={() => navigate("/UsersTable")} type="button">
+              Gestion des utilisateurs
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
         <button
           type="button"
           className="button2 m-6 mt-14 w-[60%]"
