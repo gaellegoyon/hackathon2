@@ -37,15 +37,6 @@ function Profil() {
           avatarOption={avatarOption}
           avatarTextOption={avatarTextOption}
         />
-        {user.is_admin === 1 ? (
-          <div>
-            <button onClick={() => navigate("/UsersTable")} type="button">
-              Gestion des utilisateurs
-            </button>
-          </div>
-        ) : (
-          ""
-        )}
         <button
           type="button"
           className="button2 m-6 mt-14 w-[60%]"
@@ -63,6 +54,19 @@ function Profil() {
         >
           Contact
         </button>
+        {user.is_admin === 1 ? (
+          <div>
+            <button
+              className="button2 m-6 w-[85%]"
+              onClick={() => navigate("/UsersTable")}
+              type="button"
+            >
+              Gestion des utilisateurs
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

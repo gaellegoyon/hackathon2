@@ -39,7 +39,7 @@ export default function UsersTable() {
   useEffect(() => {
     fetch(`http://localhost:5000/api/users/`)
       .then((res) => res.json())
-      .then((users) => setUserList(users));
+      .then((user) => setUserList(user));
   }, []);
   return (
     <>
