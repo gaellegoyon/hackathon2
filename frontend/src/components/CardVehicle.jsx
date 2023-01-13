@@ -1,5 +1,6 @@
 /* eslint-disable import/order */
 import React from "react";
+// eslint-disable-next-line import/no-unresolved
 import ModalConfirm from "@components/ModalConfirm";
 import { useCurrentUserContext } from "../contexts/userContext";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +13,7 @@ function CardVehicle() {
       <div className="w-[95%] h-[20vh] card">
         <div className="flex">
           <h2 className="pl-6 pt-6 text-main-font text-black text-xl">
-            GLA 250 SUV
+            nom du vehicule
           </h2>
           <div className="relative bottom-5 left-5 bg-vehicle1 w-[55%] h-[15vh] bg-cover" />
         </div>

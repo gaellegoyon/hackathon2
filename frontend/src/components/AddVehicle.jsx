@@ -12,52 +12,19 @@ import { useCurrentUserContext } from "../contexts/userContext";
 import ManageVehicle from "./ManageVehicle";
 
 function AddVehicle() {
-  // const vehicleRef = useRef(null);
   const { token } = useCurrentUserContext();
   const [name, setName] = useState("");
   const [vehicle_brand, setVehicleBrand] = useState("");
   const [autonomy, setAutonomy] = useState("");
   const [power, setPower] = useState("");
-  const [localisation, setLocalisation] = useState("");
+  const [numero, setNumero] = useState("");
+  const [rue, setRue] = useState("");
+  const [cp, setCp] = useState("");
+  const [ville, setVille] = useState("");
   const [vehicle_type, setVehicleType] = useState("");
   const [seat, setSeat] = useState("");
-  const [msg, setMsg] = useState("Aucun upload effectué");
+  const [msg, setMsg] = useState("");
   const [image, setImage] = useState("");
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (vehicleRef.current.files[0]) {
-  //     // recupération des articles.
-  //     const myHeader = new Headers();
-  //     myHeader.append("Authorization", `Bearer ${token}`);
-
-  //     const formData = new FormData();
-  //     formData.append("vehicle", vehicleRef.current.files[0]);
-
-  //     const requestOptions = {
-  //       method: "POST",
-  //       headers: myHeader,
-  //       body: formData,
-  //     };
-  //     // on appelle le back
-  //     fetch("http://localhost:5000/api/vehicles/image", requestOptions)
-  //       .then((response) => response.json())
-  //       .then((results) => {
-  //         // maj avatar
-  //         setImage(results.image);
-  //         console.warn(results);
-  //         setMsg("Upload réussi !");
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //         setMsg("Upload échoué !");
-  //       });
-  //   } else {
-  //     setMsg(
-  //       "Vous auriez pas oublié un truc ? Le fichier à uploader, par exemple ?"
-  //     );
-  //   }
-  // };
 
   const darkTheme = createTheme({
     palette: {
@@ -77,7 +44,10 @@ function AddVehicle() {
       vehicle_brand,
       autonomy,
       power,
-      localisation,
+      numero,
+      rue,
+      cp,
+      ville,
       vehicle_type,
       seat,
       image,
@@ -169,15 +139,48 @@ function AddVehicle() {
                 autoComplete="current-power"
               />
               <TextField
-                onChange={(e) => setLocalisation(e.target.value)}
+                onChange={(e) => setNumero(e.target.value)}
                 margin="normal"
                 required
                 fullWidth
-                name="localisation"
-                label="localisation"
-                type="localisation"
-                id="localisation"
-                autoComplete="current-localisation"
+                name="numero"
+                label="numero"
+                type="numero"
+                id="numero"
+                autoComplete="current-numero"
+              />
+              <TextField
+                onChange={(e) => setRue(e.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                name="rue"
+                label="rue"
+                type="rue"
+                id="rue"
+                autoComplete="current-rue"
+              />
+              <TextField
+                onChange={(e) => setCp(e.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                name="cp"
+                label="cp"
+                type="cp"
+                id="cp"
+                autoComplete="current-cp"
+              />
+              <TextField
+                onChange={(e) => setVille(e.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                name="ville"
+                label="ville"
+                type="ville"
+                id="ville"
+                autoComplete="current-ville"
               />
 
               <InputLabel htmlFor="seat">Siège</InputLabel>
@@ -203,21 +206,98 @@ function AddVehicle() {
                 id="image"
                 onChange={(e) => setImage(e.target.value)}
               >
-                <option>Selectionner un véhicule</option>
-                <option value="backend/public/uploads_vehicle/08ed068a-c573-4a2b-80a6-9d6566a63f96-Renault_Twingo_E-Tech.png">
-                  renault twingo e-tech
-                </option>
-                <option value="backend/public/uploads_vehicle/9378d415-0804-4aba-81fa-dae7ff9a8727-LYON2.jpeg">
-                  toyota prius
-                </option>
+                <option value="">Selectionner un véhicule</option>
+                {vehicle_type === "Voiture" && (
+                  <>
+                    <option
+                      type="Voiture"
+                      value="frontend/src/assets/car/Renault Twingo E-Tech.png"
+                    >
+                      Renault twingo e-tech
+                    </option>
+                    <option
+                      type="Voiture"
+                      value="frontend/src/assets/car/citroenEBerlingo.png"
+                    >
+                      Citroen EBerlingo
+                    </option>
+                    <option
+                      type="Voiture"
+                      value="frontend/src/assets/car/peugeot-e-208.png"
+                    >
+                      Peugeot e-208
+                    </option>
+                    <option
+                      type="Voiture"
+                      value="frontend/src/assets/car/Renault Master E-Tech.png"
+                    >
+                      Renault Master E-Tech
+                    </option>
+                    <option
+                      type="Voiture"
+                      value="frontend/src/assets/car/renault_zoe.png"
+                    >
+                      Renault zoe
+                    </option>
+                    <option
+                      type="Voiture"
+                      value="frontend/src/assets/car/renaultKangooVanETech.png"
+                    >
+                      Renault Kangoo VanETech
+                    </option>
+                  </>
+                )}
+                {vehicle_type === "Scooter" && (
+                  <>
+                    <option
+                      type="Scooter"
+                      value="frontend/src/assets/scooter/eludix.png"
+                    >
+                      eludix
+                    </option>
+                    <option
+                      type="Scooter"
+                      value="frontend/src/assets/scooter/RIDER3000W.png"
+                    >
+                      RIDER 3000W
+                    </option>
+                    <option
+                      type="Scooter"
+                      value="frontend/src/assets/scooter/Segway E125S.png"
+                    >
+                      Segway E125S
+                    </option>
+                  </>
+                )}
+                {vehicle_type === "Vélo" && (
+                  <>
+                    <option
+                      type="Vélo"
+                      value="frontend/src/assets/bike/ELOPS 120 E.png"
+                    >
+                      ELOPS 120 E
+                    </option>
+                    <option
+                      type="Vélo"
+                      value="frontend/src/assets/bike/NEOMOUV ALLEGRIA 2 HYDRAULIQUE.png"
+                    >
+                      ALLEGRIA 2 HYDRAULIQUE
+                    </option>
+                    <option
+                      type="Vélo"
+                      value="frontend/src/assets/bike/NEOMOUV SINAPIA N7.png"
+                    >
+                      NEOMOUV SINAPIA N7
+                    </option>
+                    <option
+                      type="Vélo"
+                      value="frontend/src/assets/bike/VTCriverside540 .png"
+                    >
+                      VTC riverside 540
+                    </option>
+                  </>
+                )}
               </NativeSelect>
-
-              {/* <input
-                type="file"
-                ref={vehicleRef}
-                onChange={(e) => setImage(e.target.value)}
-              /> */}
-
               <Button
                 onSubmit={handleForm}
                 type="submit"

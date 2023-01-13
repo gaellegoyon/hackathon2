@@ -21,6 +21,7 @@
     "@mui/styled-engine-sc": "^5.11.0",
     "axios": "^1.2.1",
     "date-fns": "^2.29.3",
+    "esbuild": "^0.16.17",
     "flowbite": "^1.6.1",
     "flowbite-react": "^0.3.7",
     "latitude-longitude": "^1.1.1",
