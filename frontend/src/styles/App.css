@@ -301,3 +301,44 @@ body {
 .MuiBottomNavigationAction-root {
   color: #890000 !important;
 }
+
+.register-form {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-div {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.register-label {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #c5c5c5;
+}
+
+.register-input {
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.register-form #firstname {
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.register-form button {
+  margin-top: 2rem;
+}
+.register-form p {
+  margin-bottom: 2rem;
+  font-size: 22px;
+  color: white;
+}
