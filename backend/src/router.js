@@ -27,9 +27,9 @@ router.post(
 );
 
 // Gestion des vehicle
-router.get("/api/vehicles", vehicleControllers.browse);
+router.get("/api/vehicles/all", vehicleControllers.browse);
 router.get("/api/vehicles/:id", vehicleControllers.read);
-router.post("/api/vehicles", verifyToken, vehicleControllers.addVehicle);
+router.post("/api/vehicles/", verifyToken, vehicleControllers.addVehicle);
 router.put("/api/vehicles/:id", verifyToken, vehicleControllers.edit);
 router.delete("/api/vehicles/:id", verifyToken, vehicleControllers.destroy);
 

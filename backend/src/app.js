@@ -21,6 +21,8 @@ app.use(
   })
 );
 
+app.use("", express.static('/frontend/src/assets/'));
+
 app.use(express.json());
 
 // Serve the public folder for public resources

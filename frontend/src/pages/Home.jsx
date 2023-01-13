@@ -69,11 +69,7 @@ function Home() {
           <BikeFilter />
         </div>
 
-        <div className="overflow-auto h-[55vh]">
-          <CardVehicle />
-          <CardVehicle />
-          <CardVehicle />
-          <CardVehicle />
+        <div className="overflow-auto h-[55vh] flex flex-wrap">
           <CardVehicle />
         </div>
 

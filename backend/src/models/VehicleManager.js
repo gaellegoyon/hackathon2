@@ -5,6 +5,12 @@ class VehicleManager extends AbstractManager {
     super({ table: "vehicle" });
   }
 
+  findAll() {
+    return this.connection.query(
+      `select name, vehicle_brand, autonomy, power, image, vehicle_type, seat, numero, rue, cp, ville from  ${this.table}`
+    );
+  }
+
   insert(vehicle) {
     return this.connection.query(
       `INSERT INTO ${this.table} (name, vehicle_brand, autonomy, power, image, vehicle_type, seat, numero, rue, cp, ville)
