@@ -42,7 +42,7 @@ const addVehicle = (req, res) => {
 
 const edit = (req, res) => {
   const vehicle = req.body;
-  vehicle.id = req.params.id;
+  vehicle.id = parseInt(req.params.id, 10);
 
   models.vehicle
     .update(vehicle)

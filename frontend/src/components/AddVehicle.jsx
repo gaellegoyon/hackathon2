@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { InputLabel, NativeSelect } from "@mui/material";
 import { useCurrentUserContext } from "../contexts/userContext";
+// eslint-disable-next-line import/no-named-as-default
 import ManageVehicle from "./ManageVehicle";
 
 function AddVehicle() {
@@ -25,6 +26,8 @@ function AddVehicle() {
   const [seat, setSeat] = useState("");
   const [msg, setMsg] = useState("");
   const [image, setImage] = useState("");
+  const [count, setCount] = useState(0);
+  const [addCount, setAddCount] = useState(0);
 
   const darkTheme = createTheme({
     palette: {
@@ -32,9 +35,8 @@ function AddVehicle() {
     },
   });
 
-  const handleForm = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // handleSubmit(e); // On appelle handleSubmit avant de créer le véhicule
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", `Bearer ${token}`);
@@ -58,15 +60,15 @@ function AddVehicle() {
       headers: myHeaders,
       body,
     };
-    e.preventDefault();
-    // on créé et on redirige
-    fetch("http://localhost:5000/api/vehicles", requestOptions)
-      .then(() => {
-        setMsg("Véhicule ajoutée");
-      })
-      .catch(console.error);
-  };
 
+    useEffect(() => {
+      fetch("http://localhost:5000/api/vehicles", requestOptions)
+        .then(() => {
+          setMsg("Véhicule ajoutée");
+        })
+        .catch(console.error);
+    }, [addCount]);
+  };
   return (
     <div className="w-full h-[100vh] bg-[#171717]">
       <ThemeProvider theme={darkTheme}>
@@ -89,7 +91,7 @@ function AddVehicle() {
             </Typography>
             <Box
               component="form"
-              onSubmit={handleForm}
+              onSubmit={() => handleSubmit()}
               noValidate
               sx={{ mt: 1 }}
               encType="multipart/form-data"
@@ -100,7 +102,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 id="name"
-                label="name"
+                label="Marque"
                 name="name"
                 autoComplete="name"
                 autoFocus
@@ -111,7 +113,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="vehicle_brand"
-                label="vehicle_brand"
+                label="Model"
                 type="vehicle_brand"
                 id="vehicle_brand"
                 autoComplete="current-vehicle_brand"
@@ -122,7 +124,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="autonomy"
-                label="autonomy"
+                label="Autonomie"
                 type="autonomy"
                 id="autonomy"
                 autoComplete="current-autonomy"
@@ -133,7 +135,7 @@ function AddVehicle() {
                 required
                 fullWidth
                 name="power"
-                label="power"
+                label="Puissance"
                 type="power"
                 id="power"
                 autoComplete="current-power"
@@ -299,7 +301,7 @@ function AddVehicle() {
                 )}
               </NativeSelect>
               <Button
-                onSubmit={handleForm}
+                onSubmit={handleSubmit}
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -312,7 +314,12 @@ function AddVehicle() {
         </Container>
         {msg}
       </ThemeProvider>
-      <ManageVehicle />
+      <ManageVehicle
+        count={count}
+        setCount={setCount}
+        addCount={addCount}
+        setAddCount={setAddCount}
+      />
     </div>
   );
 }

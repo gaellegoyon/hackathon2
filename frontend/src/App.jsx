@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/App.css";
-import Profil from "@pages/Profil";
-import Map from "@pages/Map";
-import InCome from "@pages/InCome";
-import BigMail from "@pages/BigMail";
+import Profil from "./pages/Profil";
+import Map from "./pages/Map";
+import InCome from "./pages/InCome";
+import BigMail from "./pages/BigMail";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -13,9 +13,10 @@ import UserManage from "./components/UserManage";
 import UserInfo from "./pages/UserInfo";
 import Supplier from "./pages/Supplier";
 import VehicleDetail from "./pages/VehicleDetail";
-
 import { CurrentUserContextProvider } from "./contexts/userContext";
+// eslint-disable-next-line import/no-named-as-default
 import AddVehicle from "./components/AddVehicle";
+import UsersTable from "./pages/UsersTable";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/Supplier" element={<Supplier />} />
           <Route path="/reception" element={<InCome />} />
+          <Route path="/usersTable" element={<UsersTable />} />
           <Route path="/mail" element={<BigMail />} />
         </Routes>
       </CurrentUserContextProvider>
