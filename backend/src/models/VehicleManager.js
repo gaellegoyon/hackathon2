@@ -5,27 +5,51 @@ class VehicleManager extends AbstractManager {
     super({ table: "vehicle" });
   }
 
+  findAll() {
+    return this.connection.query(
+      `select name, vehicle_brand, autonomy, power, image, vehicle_type, seat, numero, rue, cp, ville from  ${this.table}`
+    );
+  }
+
   insert(vehicle) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (name, vehicle_brand, autonomy,power,localisation,vehicle_type,seat)
-    VALUES(?,?,?,?,?,?,?)`,
+      `INSERT INTO ${this.table} (name, vehicle_brand, autonomy, power, image, vehicle_type, seat, numero, rue, cp, ville)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?)`,
       [
         vehicle.name,
         vehicle.vehicle_brand,
         vehicle.autonomy,
         vehicle.power,
-        vehicle.localisation,
+        vehicle.image,
         vehicle.vehicle_type,
         vehicle.seat,
+        vehicle.numero,
+        vehicle.rue,
+        vehicle.cp,
+        vehicle.ville,
+        
       ]
     );
   }
 
   update(vehicle) {
-    return this.connection.query(`update ${this.table} set ? where id = ?`, [
-      vehicle,
-      vehicle.id,
-    ]);
+    return this.connection.query(
+      `UPDATE ${this.table} SET name = ?, vehicle_brand = ?,
+      autonomy = ?,power=?,vehicle_type=?,image=?, numero=?, rue=?, cp=?, ville=? WHERE id = ? `,
+      [
+        vehicle.name,
+        vehicle.vehicle_brand,
+        vehicle.autonomy,
+        vehicle.power,
+        vehicle.vehicle_type,
+        vehicle.id,
+        vehicle.image,
+        vehicle.numero,
+        vehicle.rue,
+        vehicle.cp,
+        vehicle.ville,
+      ]
+    );
   }
 }
 

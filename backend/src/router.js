@@ -3,6 +3,7 @@ const multer = require("multer");
 
 const router = express.Router();
 const upload = multer({ dest: process.env.AVATAR_DIRECTORY });
+const uploads = multer({ dest: process.env.VEHICLE_DIRECTORY });
 
 // services d'auth
 const {
@@ -15,6 +16,7 @@ const authControllers = require("./controllers/authControllers");
 const vehicleControllers = require("./controllers/vehicleControllers");
 const userControllers = require("./controllers/userControllers");
 const fileControllers = require("./controllers/fileControllers");
+const vehicleFileControllers = require("./controllers/vehicleFileControllers");
 
 // Auth
 router.post("/api/register", hashPassword, userControllers.add);
@@ -25,9 +27,9 @@ router.post(
 );
 
 // Gestion des vehicle
-router.get("/api/vehicles", vehicleControllers.browse);
+router.get("/api/vehicles/all", vehicleControllers.browse);
 router.get("/api/vehicles/:id", vehicleControllers.read);
-router.post("/api/vehicles", verifyToken, vehicleControllers.addVehicle);
+router.post("/api/vehicles/", verifyToken, vehicleControllers.addVehicle);
 router.put("/api/vehicles/:id", verifyToken, vehicleControllers.edit);
 router.delete("/api/vehicles/:id", verifyToken, vehicleControllers.destroy);
 
@@ -48,9 +50,15 @@ router.post(
 );
 router.get("/api/avatars/:fileName", fileControllers.sendAvatar);
 
-// Message
-
-router.post("/api/message", verifyToken, userControllers.sendMessage);
-router.get("/api/message/:id", userControllers.sendMessage);
+// Gestion des vehicles
+router.post(
+  "/api/vehicles/image",
+  verifyToken,
+  uploads.single("vehicle"),
+  vehicleFileControllers.renameVehicle,
+  vehicleFileControllers.sendVehicle,
+  vehicleControllers.addVehicle
+);
+router.get("/api/vehicles/:fileName", vehicleFileControllers.sendVehicle);
 
 module.exports = router;
